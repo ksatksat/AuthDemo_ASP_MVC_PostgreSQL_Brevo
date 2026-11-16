@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auth Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Auth Demo</h1>
+    <p id="msg" class="msg" hidden></p>
+
+    <!-- Logged OUT -->
+    <section id="guest">
+      <div class="tabs">
+        <button id="tab-login" class="active" type="button">Login</button>
+        <button id="tab-register" type="button">Register</button>
+      </div>
+
+      <form id="login-form">
+        <input name="email" type="email" placeholder="Email" autocomplete="username" maxlength="254" required>
+        <input name="password" type="password" placeholder="Password" autocomplete="current-password" maxlength="72" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <!-- Register, step 1: confirm that the e-mail is real -->
+      <form id="email-form" hidden>
+        <input name="email" type="email" placeholder="Your email" autocomplete="email" maxlength="254" required>
+        <small>We will send a 6-digit code to this address to confirm that it is real.</small>
+        <button type="submit">Send code</button>
+      </form>
+
+      <!-- Register, step 2: code + name + password -->
+      <form id="register-form" hidden>
+        <small id="code-hint"></small>
+        <input name="code" placeholder="6-digit code" inputmode="numeric" autocomplete="one-time-code"
+               pattern="\d{6}" maxlength="6" required>
+        <input name="name" placeholder="Name" autocomplete="name" minlength="2" maxlength="50" required>
+        <input name="password" type="password" placeholder="Password" autocomplete="new-password" maxlength="72" required
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+               title="8+ chars: a-z, A-Z, 0-9 and a special character like _ or -">
+        <small>8+ chars, with <b>a-z</b>, <b>A-Z</b>, <b>0-9</b> and a special char (<b>_ -</b> ...)</small>
+        <button type="submit">Create account</button>
+        <button type="button" id="btn-resend" class="secondary">Resend code</button>
+        <button type="button" id="btn-change-email" class="secondary">Change email</button>
+      </form>
+    </section>
+
+    <!-- Logged IN -->
+    <section id="user" hidden>
+      <p>Hello, <b id="u-name"></b>!</p>
+      <p>Email: <span id="u-email"></span></p>
+      <p>Role: <span id="u-role"></span></p>
+
+      <div class="row" id="actions">
+        <button id="btn-admin" type="button">Try admin-only endpoint</button>
+        <button id="btn-logout" type="button">Logout</button>
+        <button id="btn-delete" type="button" class="danger">Delete account</button>
+      </div>
+
+      <!-- Destructive action: ask for the password again -->
+      <form id="delete-form" hidden>
+        <small>Enter your password to permanently delete your account.</small>
+        <input name="password" type="password" placeholder="Password" autocomplete="current-password" maxlength="72" required>
+        <button type="submit" class="danger">Confirm delete</button>
+        <button type="button" id="btn-delete-cancel" class="secondary">Cancel</button>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

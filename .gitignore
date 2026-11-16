@@ -1,0 +1,68 @@
+
+# ---------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------
+bin/
+obj/
+publish/
+[Dd]ebug/
+[Rr]elease/
+*.dll
+*.pdb
+ 
+# ---------------------------------------------------------------
+# Secrets and local configuration  (NEVER commit these)
+# ---------------------------------------------------------------
+# dotnet user-secrets are stored outside the project, but just in case:
+secrets.json
+.env
+.env.*
+appsettings.*.local.json
+appsettings.Local.json
+appsettings.Production.json
+ 
+# Certificates and keys
+*.pfx
+*.p12
+*.pem
+*.crt
+*.cer
+*.key
+ 
+# ---------------------------------------------------------------
+# Local databases and logs
+# ---------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+ 
+# ---------------------------------------------------------------
+# IDE / editor files
+# ---------------------------------------------------------------
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+*.swp
+*~
+ 
+# ---------------------------------------------------------------
+# Tests and tooling
+# ---------------------------------------------------------------
+TestResults/
+*.trx
+coverage/
+.dotnet/
+ 
+# ---------------------------------------------------------------
+# OS files
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+ 
